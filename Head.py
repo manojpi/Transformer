@@ -3,18 +3,14 @@ import torch.nn as nn
 import torch.nn.functional as F
 import model_dimensions
 
-batch_size = model_dimensions.batch_size
+
 context_length = model_dimensions.context_length
 embedding_dim = model_dimensions.embedding_dim
-n_heads = model_dimensions.n_heads
-head_dim = model_dimensions.head_dim
-n_layer = model_dimensions.n_layer
-dropout= model_dimensions.dropout
 
 
 class Head(nn.Module):
 
-    def __init__(self):
+    def __init__(self, head_dim):
         super().__init__()
 
         self.key = nn.Linear(embedding_dim, head_dim, bias=False)
